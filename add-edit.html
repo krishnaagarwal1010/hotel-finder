@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StayHub - Save Listing</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-3">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" id="nav-brand">
+        <i class="bi bi-houses-fill"></i> StayHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" id="nav-explore">
+              <i class="bi bi-search me-1"></i> Explore Stays
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="manage.html" id="nav-manage">
+              <i class="bi bi-sliders me-1"></i> Manage Hotels
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="py-5">
+    <div class="container" style="max-width: 800px;">
+      
+      <!-- Back Button -->
+      <div class="mb-4">
+        <a href="manage.html" class="btn btn-outline-secondary btn-sm" id="btn-back-manage">
+          <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+        </a>
+      </div>
+
+      <!-- Main Form Card -->
+      <section class="card border border-light shadow-sm">
+        <div class="card-header bg-white py-3 border-bottom-0">
+          <h2 class="fw-bold m-0 fs-3 text-primary" id="form-title">Add New Hotel Listing</h2>
+          <p class="text-muted m-0 small mt-1">Please enter accurate information below to register or update this hotel.</p>
+        </div>
+        <div class="card-body px-4 pb-4 pt-1">
+          
+          <!-- Loading Form Indicator -->
+          <div id="form-loading" class="text-center py-5 d-none">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="text-muted mt-2 small">Loading current listing data...</p>
+          </div>
+
+          <form id="hotel-form">
+            <!-- Row: Hotel Name & Location -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-7">
+                <label for="hotel-name-input" class="form-label small fw-semibold text-secondary">Hotel Name</label>
+                <input type="text" class="form-control" id="hotel-name-input" placeholder="e.g. Hotel Grand Plaza" required>
+              </div>
+              <div class="col-md-5">
+                <label for="hotel-location-input" class="form-label small fw-semibold text-secondary">City Location</label>
+                <select class="form-select" id="hotel-location-input" required>
+                  <option value="" disabled selected>Select City</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Bengaluru">Bengaluru</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gurgaon">Gurgaon</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Noida">Noida</option>
+                  <option value="Pune">Pune</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row: Price & Rating -->
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="hotel-price-input" class="form-label small fw-semibold text-secondary">Price per Night (₹)</label>
+                <div class="input-group">
+                  <span class="input-group-text">₹</span>
+                  <input type="number" class="form-control" id="hotel-price-input" placeholder="e.g. 4500" min="1" required>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="hotel-rating-input" class="form-label small fw-semibold text-secondary">Star Rating (1.0 to 5.0)</label>
+                <input type="number" class="form-control" id="hotel-rating-input" placeholder="e.g. 4.5" min="1.0" max="5.0" step="0.1" required>
+              </div>
+            </div>
+
+            <!-- Thumbnail Image -->
+            <div class="mb-3">
+              <label for="hotel-thumbnail-input" class="form-label small fw-semibold text-secondary">Thumbnail Image URL</label>
+              <input type="url" class="form-control" id="hotel-thumbnail-input" placeholder="https://example.com/image.jpg" required>
+              <div class="form-text small">Provide a direct Unsplash or image URL (HTTPS is required).</div>
+            </div>
+
+            <!-- Additional Photos Gallery -->
+            <div class="mb-3">
+              <label for="hotel-photos-input" class="form-label small fw-semibold text-secondary">Gallery Image URLs (Optional)</label>
+              <textarea class="form-control" id="hotel-photos-input" rows="2" placeholder="https://example.com/photo1.jpg, https://example.com/photo2.jpg"></textarea>
+              <div class="form-text small">Enter multiple photo URLs separated by commas. These will construct the carousel gallery on the details page.</div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-4">
+              <label for="hotel-description-input" class="form-label small fw-semibold text-secondary">Description</label>
+              <textarea class="form-control" id="hotel-description-input" rows="4" placeholder="Describe the hotel location, room types, food quality, services, or amenities..." required></textarea>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="d-flex justify-content-end gap-2 border-top pt-4">
+              <a href="manage.html" class="btn btn-outline-secondary px-4 py-2">Cancel</a>
+              <button type="submit" class="btn btn-primary-custom px-4 py-2" id="btn-submit">Save Hotel Listing</button>
+            </div>
+
+          </form>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-custom">
+    <div class="container text-center text-md-start">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+          <h5 class="fw-bold text-white mb-2"><i class="bi bi-houses-fill text-warning me-1"></i> StayHub</h5>
+          <p class="small text-muted mb-0">The complete responsive hotel booking exploration and administration assignment portal.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item"><a href="index.html" class="small">Explore</a></li>
+            <li class="list-inline-item text-muted mx-2">|</li>
+            <li class="list-inline-item"><a href="manage.html" class="small">Admin Portal</a></li>
+          </ul>
+          <p class="small text-muted mb-0">&copy; 2026 StayHub. All rights reserved. Created for Final Frontend Assignment.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- API Client -->
+  <script src="js/api.js"></script>
+  
+  <!-- Add/Edit form Page Logic -->
+  <script src="js/add-edit.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StayHub - Find Your Perfect Escape</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-3">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" id="nav-brand">
+        <i class="bi bi-houses-fill"></i> StayHub
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html" id="nav-explore">
+              <i class="bi bi-search me-1"></i> Explore Stays
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="manage.html" id="nav-manage">
+              <i class="bi bi-sliders me-1"></i> Manage Hotels
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="pb-5">
+    
+    <!-- Hero Banner -->
+    <header class="hero-banner text-center">
+      <div class="container">
+        <h1 class="display-4">Find Your Perfect Escape</h1>
+        <p class="lead">Compare and book the finest hotels across major cities in India</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        
+        <!-- Filters Sidebar / Panel -->
+        <section class="col-lg-3">
+          <div class="filter-panel">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="m-0 fw-bold"><i class="bi bi-funnel-fill me-1 text-primary"></i> Filters</h5>
+              <button class="btn btn-sm btn-link text-decoration-none p-0 text-muted" id="btn-clear-filters">
+                Clear All
+              </button>
+            </div>
+            
+            <form id="filter-form">
+              <!-- Search query -->
+              <div class="mb-3">
+                <label for="filter-search" class="form-label small fw-semibold text-secondary">Search Hotel or City</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white border-end-0 text-muted"><i class="bi bi-search"></i></span>
+                  <input type="text" class="form-control border-start-0 ps-0" id="filter-search" placeholder="e.g. Amber Phoenix">
+                </div>
+              </div>
+
+              <!-- City location -->
+              <div class="mb-3">
+                <label for="filter-location" class="form-label small fw-semibold text-secondary">City / Location</label>
+                <select class="form-select" id="filter-location">
+                  <option value="">All Cities</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Bengaluru">Bengaluru</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gurgaon">Gurgaon</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Noida">Noida</option>
+                  <option value="Pune">Pune</option>
+                </select>
+              </div>
+
+              <!-- Price range -->
+              <div class="mb-3">
+                <label class="form-label small fw-semibold text-secondary">Price Range (₹)</label>
+                <div class="row g-2">
+                  <div class="col-6">
+                    <input type="number" class="form-control" id="filter-min-price" placeholder="Min" min="0">
+                  </div>
+                  <div class="col-6">
+                    <input type="number" class="form-control" id="filter-max-price" placeholder="Max" min="0">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Minimum Rating -->
+              <div class="mb-3">
+                <label for="filter-rating" class="form-label small fw-semibold text-secondary">Minimum Rating</label>
+                <select class="form-select" id="filter-rating">
+                  <option value="">Any Rating</option>
+                  <option value="4.5">★ 4.5 & Above</option>
+                  <option value="4.0">★ 4.0 & Above</option>
+                  <option value="3.5">★ 3.5 & Above</option>
+                  <option value="3.0">★ 3.0 & Above</option>
+                </select>
+              </div>
+
+              <!-- Sort By -->
+              <div class="mb-2">
+                <label for="filter-sort" class="form-label small fw-semibold text-secondary">Sort By</label>
+                <select class="form-select" id="filter-sort">
+                  <option value="">Recommended</option>
+                  <option value="price">Price: Low to High</option>
+                  <option value="-price">Price: High to Low</option>
+                  <option value="-rating">Rating: High to Low</option>
+                </select>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Listings Grid -->
+        <section class="col-lg-9">
+          <!-- Stats header -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="fw-semibold text-secondary m-0" id="results-count">Loading hotels...</h5>
+          </div>
+
+          <!-- Loading Indicator -->
+          <div id="loading-spinner" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="text-muted mt-3">Fetching stays from the servers...</p>
+          </div>
+
+          <!-- Error Alert -->
+          <div id="error-alert" class="alert alert-danger d-none" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i> Failed to connect to the hotel API. Please try again.
+          </div>
+
+          <!-- Grid Container -->
+          <div class="row g-4" id="hotels-grid">
+            <!-- Cards will be dynamically injected here -->
+          </div>
+
+          <!-- Empty State -->
+          <div id="empty-state" class="text-center py-5 d-none">
+            <i class="bi bi-calendar-x text-muted" style="font-size: 3rem;"></i>
+            <h4 class="mt-3 fw-bold">No hotels matched your filters</h4>
+            <p class="text-muted">Try adjusting your search criteria, clearing price limits, or selecting a different city.</p>
+            <button class="btn btn-primary-custom px-4" id="btn-empty-reset">Reset Filters</button>
+          </div>
+
+          <!-- Pagination -->
+          <nav aria-label="Hotel search results pagination" class="mt-5 d-none" id="pagination-nav">
+            <ul class="pagination justify-content-center align-items-center gap-2">
+              <li class="page-item" id="page-prev-item">
+                <button class="page-link rounded" id="btn-page-prev" aria-label="Previous Page">
+                  <i class="bi bi-chevron-left"></i> Prev
+                </button>
+              </li>
+              <li class="page-item disabled">
+                <span class="page-link border-0 bg-transparent text-dark fw-medium" id="page-info">
+                  Page 1 of 1
+                </span>
+              </li>
+              <li class="page-item" id="page-next-item">
+                <button class="page-link rounded" id="btn-page-next" aria-label="Next Page">
+                  Next <i class="bi bi-chevron-right"></i>
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer-custom">
+    <div class="container text-center text-md-start">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+          <h5 class="fw-bold text-white mb-2"><i class="bi bi-houses-fill text-warning me-1"></i> StayHub</h5>
+          <p class="small text-muted mb-0">The complete responsive hotel booking exploration and administration assignment portal.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item"><a href="index.html" class="small">Explore</a></li>
+            <li class="list-inline-item text-muted mx-2">|</li>
+            <li class="list-inline-item"><a href="manage.html" class="small">Admin Portal</a></li>
+          </ul>
+          <p class="small text-muted mb-0">&copy; 2026 StayHub. All rights reserved. Created for Final Frontend Assignment.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- API Client -->
+  <script src="js/api.js"></script>
+  
+  <!-- App Main Page Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>
