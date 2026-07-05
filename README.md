@@ -82,11 +82,3 @@ To satisfy the assignment's CRUD specifications, StayHub implements a transparen
   - Rating Filter: `?min_rating=4.0`
   - Sorting: `?order_by=-rating` or `?order_by=price`
 
----
-
-## 🚀 How to Run the Project Locally
-
-Since the project is built with vanilla HTML, CSS, and JS:
-1. Extract or clone this folder.
-2. Open `index.html` directly in any web browser.
-3. *Alternative (Recommended)*: Run a simple local development server to avoid CORS issues on certain browsers (e.g. using VS Code's "Live Server" extension, or running `npx serve` in the project directory).
